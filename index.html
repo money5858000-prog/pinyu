@@ -57,7 +57,6 @@
             object-fit: contain;
         }
 
-        /* AI Chat Shimmer effect */
         .shimmer {
             background: linear-gradient(90deg, #1e293b 0%, #334155 50%, #1e293b 100%);
             background-size: 200% 100%;
@@ -79,14 +78,12 @@
             text-align: center;
         }
 
-        /* Glassmorphism for AI */
         .glass-panel {
             background: rgba(30, 41, 59, 0.7);
             backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        /* Scrollbar custom for chat */
         .custom-scrollbar::-webkit-scrollbar {
             width: 6px;
         }
@@ -105,7 +102,6 @@
     <header class="bg-slate-900/90 backdrop-blur-lg border-b border-slate-800 sticky top-0 z-50">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center space-x-3 group">
-                <!-- 優先讀取本地圖片，若失敗顯示文字 Logo -->
                 <img src="./S__99287045_0.jpg" alt="Logo" class="h-10 w-auto object-contain transition group-hover:scale-110" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
                 <div class="hidden h-10 w-10 img-fallback rounded-lg flex items-center justify-center border border-yellow-600/30">品祐</div>
                 <div class="hidden sm:block">
@@ -142,7 +138,8 @@
                 <a href="#ai-assistant" class="bg-slate-800 border-2 border-yellow-500 text-yellow-500 px-12 py-5 rounded-2xl font-black text-lg transition hover:bg-yellow-500 hover:text-slate-900 shadow-2xl">
                     <i class="fas fa-magic mr-2"></i> AI 智能預審
                 </a>
-                <a href="https://line.me/ti/p/p8957p" class="bg-green-600 text-white px-12 py-5 rounded-2xl font-black text-lg transition hover:bg-green-500 shadow-2xl flex items-center justify-center">
+                <!-- 優化後的 LINE 連結 -->
+                <a href="https://line.me/R/ti/p/~p8957p" target="_blank" class="bg-green-600 text-white px-12 py-5 rounded-2xl font-black text-lg transition hover:bg-green-500 shadow-2xl flex items-center justify-center">
                     <i class="fab fa-line mr-2 text-2xl"></i> LINE 快速對辦
                 </a>
             </div>
@@ -157,7 +154,6 @@
                 <div class="h-1 w-24 bg-yellow-600 mx-auto rounded-full"></div>
             </div>
             <div class="grid md:grid-cols-3 gap-10">
-                <!-- 優勢卡片 1 -->
                 <div class="p-10 bg-slate-800/40 rounded-[2.5rem] border border-slate-700/50 card-hover glass-panel">
                     <div class="w-16 h-16 bg-yellow-500/10 text-yellow-500 rounded-2xl flex items-center justify-center mb-8">
                         <i class="fas fa-shipping-fast text-3xl"></i>
@@ -165,7 +161,6 @@
                     <h4 class="text-2xl font-bold mb-4 text-white">兩小時預審機制</h4>
                     <p class="text-slate-400 leading-relaxed font-medium">我們深知業務爭分奪秒，進件後兩小時內必回覆，讓您精準掌握成交節奏。</p>
                 </div>
-                <!-- 優勢卡片 2 -->
                 <div class="p-10 bg-slate-800/40 rounded-[2.5rem] border border-slate-700/50 card-hover glass-panel">
                     <div class="w-16 h-16 bg-yellow-500/10 text-yellow-500 rounded-2xl flex items-center justify-center mb-8">
                         <i class="fas fa-user-shield text-3xl"></i>
@@ -173,7 +168,6 @@
                     <h4 class="text-2xl font-bold mb-4 text-white">債權安全網</h4>
                     <p class="text-slate-400 leading-relaxed font-medium">配置隱藏式 GPS 與專業債權回收機制。您專注賣車領退佣，風險由品祐承擔。</p>
                 </div>
-                <!-- 優勢卡片 3 -->
                 <div class="p-10 bg-slate-800/40 rounded-[2.5rem] border border-slate-700/50 card-hover glass-panel">
                     <div class="w-16 h-16 bg-yellow-500/10 text-yellow-500 rounded-2xl flex items-center justify-center mb-8">
                         <i class="fas fa-handshake text-3xl"></i>
@@ -243,9 +237,7 @@
                 </div>
                 
                 <div class="flex flex-col md:flex-row gap-16 items-center justify-center">
-                    <!-- 聯絡資訊欄 -->
                     <div class="space-y-10 flex-1">
-                        <!-- 經理姓名 -->
                         <div class="flex items-center gap-6 group">
                             <div class="w-16 h-16 bg-yellow-500/10 text-yellow-500 rounded-2xl flex items-center justify-center border border-yellow-500/20 group-hover:bg-yellow-500 group-hover:text-slate-950 transition-all duration-300">
                                 <i class="fas fa-user-check text-2xl"></i>
@@ -256,7 +248,6 @@
                             </div>
                         </div>
 
-                        <!-- 電話 -->
                         <a href="tel:0925231708" class="flex items-center gap-6 group cursor-pointer block">
                             <div class="w-16 h-16 bg-yellow-500/10 text-yellow-500 rounded-2xl flex items-center justify-center border border-yellow-500/20 group-hover:bg-yellow-500 group-hover:text-slate-950 transition-all duration-300">
                                 <i class="fas fa-mobile-alt text-2xl"></i>
@@ -267,19 +258,17 @@
                             </div>
                         </a>
 
-                        <!-- LINE ID -->
-                        <div class="flex items-center gap-6 group">
+                        <a href="https://line.me/R/ti/p/~p8957p" target="_blank" class="flex items-center gap-6 group cursor-pointer block">
                             <div class="w-16 h-16 bg-green-500/10 text-green-500 rounded-2xl flex items-center justify-center border border-green-500/20 group-hover:bg-green-500 group-hover:text-white transition-all duration-300">
                                 <i class="fab fa-line text-3xl"></i>
                             </div>
                             <div>
-                                <p class="text-xs text-green-500 font-black uppercase tracking-widest mb-1">LINE ID</p>
-                                <p class="text-3xl font-black text-white">p8957p</p>
+                                <p class="text-xs text-green-500 font-black uppercase tracking-widest mb-1">LINE ID (點擊加入)</p>
+                                <p class="text-3xl font-black text-white group-hover:text-green-500 transition-colors">p8957p</p>
                             </div>
-                        </div>
+                        </a>
                     </div>
                     
-                    <!-- QR Code 欄位 -->
                     <div class="flex flex-col items-center">
                         <div class="qr-container group">
                             <img src="./黃俊QR CORD.jpg" alt="LINE QR" class="transition group-hover:scale-105" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
@@ -309,8 +298,6 @@
     </footer>
 
     <script>
-        // 【重要】正式佈署後，請在下方填入您的 API Key。
-        // 若為空字串，系統會自動進入「模擬展示模式」。
         const apiKey = ""; 
 
         const chatContainer = document.getElementById('chat-container');
@@ -326,7 +313,6 @@
         `;
 
         async function callGemini(query) {
-            // 如果沒填 API Key，回傳模擬訊息，確保網頁永遠能展示
             if (!apiKey || apiKey.length < 5) {
                 return new Promise(resolve => {
                     setTimeout(() => {
