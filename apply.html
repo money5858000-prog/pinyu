@@ -45,7 +45,7 @@
                 <i class="fas fa-file-invoice-dollar text-4xl text-yellow-500"></i>
             </a>
             <h1 class="text-3xl font-black gold-text">案件預審申請單</h1>
-            <p class="text-slate-500 text-sm mt-2 font-medium">請填寫基本資料，黃俊經理將儘速回覆</p>
+            <p class="text-slate-500 text-sm mt-2 font-medium">請填寫基本資料，資料將同步至管理後台</p>
         </div>
 
         <!-- Form Card -->
@@ -53,11 +53,11 @@
             <form id="applyForm" class="space-y-6">
                 <div>
                     <label class="block text-sm font-bold text-slate-400 mb-2 ml-1">客戶姓名 / 稱呼</label>
-                    <input type="text" id="name" placeholder="例如：林先生" class="w-full rounded-2xl p-4 outline-none transition shadow-inner">
+                    <input type="text" id="name" placeholder="例如：林先生" class="w-full rounded-2xl p-4 outline-none transition shadow-inner" required>
                 </div>
                 <div>
                     <label class="block text-sm font-bold text-slate-400 mb-2 ml-1">聯絡電話</label>
-                    <input type="tel" id="phone" placeholder="09XX-XXX-XXX" class="w-full rounded-2xl p-4 outline-none transition shadow-inner">
+                    <input type="tel" id="phone" placeholder="09XX-XXX-XXX" class="w-full rounded-2xl p-4 outline-none transition shadow-inner" required>
                 </div>
                 <div>
                     <label class="block text-sm font-bold text-slate-400 mb-2 ml-1">預計貸款金額</label>
@@ -70,13 +70,14 @@
                 </div>
                 <div>
                     <label class="block text-sm font-bold text-slate-400 mb-2 ml-1">職業與收入狀況</label>
-                    <textarea id="job" placeholder="例如：領現無勞保、自營商、上班族..." rows="3" class="w-full rounded-2xl p-4 outline-none transition resize-none shadow-inner"></textarea>
+                    <textarea id="job" placeholder="例如：領現無勞保、自營商..." rows="3" class="w-full rounded-2xl p-4 outline-none transition resize-none shadow-inner"></textarea>
                 </div>
                 
-                <div class="pt-4">
+                <div class="pt-4 space-y-3">
                     <button type="button" onclick="handleSubmit()" class="w-full bg-gradient-to-r from-yellow-600 to-yellow-500 text-slate-900 font-black py-5 rounded-2xl hover:brightness-110 transition transform active:scale-95 shadow-xl shadow-yellow-500/10 text-lg">
-                        確認送出並聯絡黃俊
+                        確認送出並同步資料
                     </button>
+                    <p class="text-[10px] text-center text-slate-500 font-bold">送出後將引導至 LINE 與黃經理聯繫</p>
                 </div>
             </form>
         </div>
@@ -86,6 +87,9 @@
         </div>
     </div>
 
+    <!-- 隱藏的 iframe 用於背景提交 Google 表單 -->
+    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+
     <script>
         function handleSubmit() {
             const name = document.getElementById('name').value;
@@ -93,10 +97,32 @@
             const amount = document.getElementById('amount').value;
             const job = document.getElementById('job').value;
 
-            const message = `您好，我想申請預審單：%0A姓名：${name}%0A電話：${phone}%0A金額：${amount}%0A狀況：${job}`;
-            const lineUrl = `https://line.me/R/ti/p/~p8957p?text=${message}`;
-            
-            window.location.href = lineUrl;
+            if(!name || !phone) {
+                alert("請填寫姓名與電話。");
+                return;
+            }
+
+            // --- 根據您的連結更新後的資訊 ---
+            const formId = "1FAIpQLSc3YXhVET54zmeTPvV5nUCVSR-w6ZHKh3fj_RQP9uV7GVyb_Q"; 
+            const entryName = "entry.934582360";   // 姓名欄位 ID
+            const entryPhone = "entry.1786415337";  // 電話欄位 ID
+            const entryAmount = "entry.1494090480"; // 金額欄位 ID
+            const entryJob = "entry.1785132943";    // 職業欄位 ID
+
+            // 構建 Google 表單提交 URL
+            const googleSubmitUrl = `https://docs.google.com/forms/d/e/${formId}/formResponse?${entryName}=${encodeURIComponent(name)}&${entryPhone}=${encodeURIComponent(phone)}&${entryAmount}=${encodeURIComponent(amount)}&${entryJob}=${encodeURIComponent(job)}&submit=Submit`;
+
+            // 使用隱藏的 iframe 進行背景提交，不跳轉 Google 頁面
+            const iframe = document.getElementById('hidden_iframe');
+            iframe.src = googleSubmitUrl;
+
+            // 提示並跳轉 LINE
+            const lineMessage = `您好，我已提交預審單：%0A姓名：${name}%0A電話：${phone}%0A金額：${amount}%0A狀況：${job}`;
+            const lineUrl = `https://line.me/R/ti/p/~p8957p?text=${lineMessage}`;
+
+            setTimeout(() => {
+                window.location.href = lineUrl;
+            }, 500);
         }
     </script>
 </body>
