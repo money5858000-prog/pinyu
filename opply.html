@@ -34,14 +34,14 @@
 </head>
 <body class="py-12 px-4 text-slate-200">
     <div class="max-w-md mx-auto">
-        <!-- 修正後的返回連結：確保指向 index.html -->
-        <a href="./index.html" class="inline-flex items-center text-slate-400 hover:text-yellow-500 mb-8 transition font-bold group">
+        <!-- 移除 ./ 確保 GitHub Pages 在子資料夾下能正確解析 -->
+        <a href="index.html" class="inline-flex items-center text-slate-400 hover:text-yellow-500 mb-8 transition font-bold group">
             <i class="fas fa-arrow-left mr-2 group-hover:-translate-x-1 transition-transform"></i> 返回品祐首頁
         </a>
 
         <!-- Logo Area - 點擊 Logo 也能回首頁 -->
         <div class="text-center mb-10">
-            <a href="./index.html" class="inline-block p-4 bg-yellow-500/10 rounded-3xl mb-4 hover:bg-yellow-500/20 transition">
+            <a href="index.html" class="inline-block p-4 bg-yellow-500/10 rounded-3xl mb-4 hover:bg-yellow-500/20 transition">
                 <i class="fas fa-file-invoice-dollar text-4xl text-yellow-500"></i>
             </a>
             <h1 class="text-3xl font-black gold-text">案件預審申請單</h1>
@@ -99,7 +99,6 @@
             const amount = document.getElementById('amount').value;
             const job = document.getElementById('job').value;
 
-            // 組合初步訊息
             const message = `您好，我想申請預審單：%0A姓名：${name}%0A電話：${phone}%0A金額：${amount}%0A狀況：${job}`;
             const lineUrl = `https://line.me/R/ti/p/~p8957p?text=${message}`;
             
